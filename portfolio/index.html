@@ -1,247 +1,364 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Riti Dahal | Portfolio</title>
+export default function PortfolioWebsite() {
+  const projects = [
+    {
+      title: "Sales Performance Dashboard",
+      category: "Business Analytics",
+      year: "2026",
+      description:
+        "An interactive dashboard designed to track sales KPIs, identify top-performing products, and support business decision-making through data visualization.",
+      tech: ["Excel", "Power BI", "SQL", "Data Visualization"],
+      link: "#",
+      github: "#",
+    },
+    {
+      title: "Customer Insights Analysis",
+      category: "Data Analytics",
+      year: "2025",
+      description:
+        "A project focused on analyzing customer behavior, segmentation, and purchasing patterns to generate actionable recommendations for business growth.",
+      tech: ["Python", "Pandas", "SQL", "Tableau"],
+      link: "#",
+      github: "#",
+    },
+    {
+      title: "Business Reporting Automation",
+      category: "Analytics Automation",
+      year: "2025",
+      description:
+        "A reporting workflow that automates recurring business reports and improves efficiency by reducing manual effort in data preparation and presentation.",
+      tech: ["Python", "Excel", "SQL", "Automation"],
+      link: "#",
+      github: "#",
+    },
+  ];
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f6fb;
-      color: #333;
-      text-align: center;
-    }
+  const experiences = [
+    {
+      role: "Data Analytics Project Contributor",
+      company: "Academic / Personal Projects",
+      period: "2024 – Present",
+      details: [
+        "Worked on projects involving business analysis, reporting, and dashboard creation.",
+        "Analyzed datasets to uncover trends, patterns, and actionable business insights.",
+        "Presented findings in a clear, visual, and decision-friendly format.",
+      ],
+    },
+    {
+      role: "Student Research / Academic Experience",
+      company: "University Experience",
+      period: "2023 – Present",
+      details: [
+        "Applied quantitative and analytical methods to solve business-related problems.",
+        "Built strong skills in communication, teamwork, and data storytelling.",
+        "Supported data-driven thinking through projects, presentations, and coursework.",
+      ],
+    },
+  ];
 
-    header {
-      background-color: #1e293b;
-      color: white;
-      padding: 60px 20px;
-    }
+  const education = [
+    {
+      school: "Your University Name",
+      degree: "Bachelor’s Degree in Business / Data Analytics",
+      period: "Expected Graduation: 2026",
+      description:
+        "Focused on business intelligence, analytics, data visualization, and decision-making. Add your GPA, honors, coursework, or relevant achievements here.",
+    },
+  ];
 
-    h1 {
-      margin: 0;
-      font-size: 40px;
-    }
+  const skills = {
+    analytics: ["Data Analysis", "Business Analysis", "Dashboarding", "Reporting"],
+    tools: ["Excel", "Power BI", "Tableau", "SQL", "GitHub", "Vercel"],
+    technical: ["Python", "Pandas", "HTML", "CSS", "JavaScript"],
+    soft: ["Problem Solving", "Communication", "Critical Thinking", "Data Storytelling"],
+  };
 
-    p {
-      max-width: 700px;
-      margin: 20px auto;
-      line-height: 1.6;
-    }
+  const navItems = ["About", "Projects", "Education", "Experience", "Skills", "Contact"];
 
-    .section {
-      padding: 50px 20px;
-    }
-
-    .card {
-      background: white;
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 600px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    a {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      background: #1e293b;
-      color: white;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <img src="profile.jpg" alt="Riti Dahal" 
-       style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:4px solid white; margin-bottom:20px;">
-    <h1>Riti Dahal</h1>
-    <p> Business & Data Analytics Enthusiast</p>
-    <p>
-      <a href="mailto:ritidahal@gmail.com" style="color:white;">Gmail</a> |
-      <a href="https://github.com/ritidahal" style="color:white;">GitHub</a> |
-      <a href="https://www.linkedin.com/in/ritidahal/" style="color:white;" target="_blank">LinkedIn</a>
-    </p>
-  </header>
-
-  <div class="section">
-    <h2>About Me</h2>
-    <p>
-      Passionate about using data to solve real-world business problems. I focus on extracting insights from data, building reports and dashboards, and supporting strategic decisions with quantitative analysis.I am passionate about helping organizations make informed, data-driven decisions that improve efficiency and performance.
-    </p>
-  </div>
-  <div class="section">
-  <div class="skills-wrap">
-    <h2 class="skills-title">Technical Skills</h2>
-    <p class="skills-subtitle">
-      Business analytics, data science, and decision-support tools.
-    </p>
-
-    <div class="skills-grid">
-
-      <!-- Programming Languages -->
-      <div class="skills-box">
-        <h3>Programming Languages</h3>
-        <div class="skill-items">
-
-          <div class="skill-item">
-            <i class="devicon-python-plain skill-icon"></i>
-            <div>
-              <div class="skill-name">Python</div>
-              <div class="skill-note">Data analysis & ML</div>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <i class="devicon-r-plain skill-icon"></i>
-            <div>
-              <div class="skill-name">R</div>
-              <div class="skill-note">Statistical modeling</div>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <i class="devicon-microsoftsqlserver-plain skill-icon"></i>
-            <div>
-              <div class="skill-name">SQL</div>
-              <div class="skill-note">Queries & reporting</div>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <i class="devicon-sass-original skill-icon"></i>
-            <div>
-              <div class="skill-name">SAS</div>
-              <div class="skill-note">Statistical analysis</div>
-            </div>
-          </div>
-
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 scroll-smooth">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+          <a href="#hero" className="text-xl font-bold tracking-tight">
+            Riti Dahal
+          </a>
+          <nav className="hidden gap-6 md:flex">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-sm text-slate-300 transition hover:text-white"
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
         </div>
-      </div>
+      </header>
 
-      <!-- Analytics Tools -->
-      <div class="skills-box">
-        <h3>Analytics Tools</h3>
-        <div class="skill-items">
-
-          <div class="skill-item">
-            <i class="devicon-microsoft-plain skill-icon"></i>
-            <div>
-              <div class="skill-name">Power BI</div>
-              <div class="skill-note">Dashboards & KPIs</div>
+      <main>
+        <section
+          id="hero"
+          className="relative overflow-hidden border-b border-white/10 bg-gradient-to-br from-cyan-700 via-slate-900 to-slate-950"
+        >
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+            <div className="flex flex-col items-center text-center">
+              <img
+                src="profile.jpg"
+                alt="Riti Dahal"
+                className="mb-6 h-[150px] w-[150px] rounded-full border-4 border-white object-cover shadow-xl"
+              />
+              <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+                Riti Dahal
+              </h1>
+              <p className="mt-4 text-lg font-medium text-cyan-200 sm:text-xl">
+                Business & Data Analytics Enthusiast
+              </p>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-white">
+                <a href="mailto:ritidahal@gmail.com" className="rounded-full border border-white/20 px-4 py-2 transition hover:bg-white/10">
+                  Gmail
+                </a>
+                <a href="https://github.com/ritidahal" className="rounded-full border border-white/20 px-4 py-2 transition hover:bg-white/10" target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ritidahal/"
+                  className="rounded-full border border-white/20 px-4 py-2 transition hover:bg-white/10"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <p className="mt-8 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
+                Passionate about using data to solve real-world business problems. I focus on extracting insights
+                from data, building reports and dashboards, and supporting strategic decisions with quantitative
+                analysis. I am passionate about helping organizations make informed, data-driven decisions that
+                improve efficiency and performance.
+              </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
+                <a
+                  href="#projects"
+                  className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.02]"
+                >
+                  View Projects
+                </a>
+                <a
+                  href="#contact"
+                  className="rounded-2xl border border-white/20 px-6 py-3 text-sm font-semibold transition hover:bg-white/10"
+                >
+                  Contact Me
+                </a>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="skill-item">
-            <i class="devicon-tableau-plain skill-icon"></i>
+        <section id="about" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
             <div>
-              <div class="skill-name">Tableau</div>
-              <div class="skill-note">Data visualization</div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">About Me</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                Using analytics to turn data into business value.
+              </h2>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-slate-300 shadow-lg">
+              <p className="text-base leading-8">
+                Hello! I’m <span className="font-semibold text-white">Riti Dahal</span>, a student and aspiring
+                analytics professional with a passion for business intelligence, reporting, and data-driven
+                decision-making. I enjoy transforming complex datasets into clear insights that help organizations
+                solve problems and make better strategic choices.
+              </p>
+              <p className="mt-5 text-base leading-8">
+                My portfolio highlights the projects, coursework, and hands-on experiences that reflect my interest
+                in analytics, business problem-solving, and storytelling with data. I am especially interested in
+                opportunities where I can combine analytical thinking with practical business impact.
+              </p>
             </div>
           </div>
+        </section>
 
-          <div class="skill-item">
-            <i class="devicon-microsoft-plain skill-icon"></i>
-            <div>
-              <div class="skill-name">Excel</div>
-              <div class="skill-note">Advanced analysis</div>
+        <section id="projects" className="border-y border-white/10 bg-white/[0.03]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">Projects</p>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                  Featured analytics and business projects
+                </h2>
+              </div>
+              <p className="max-w-2xl text-slate-300">
+                Showcase each project with business context, tools used, your analytical approach, and measurable impact.
+              </p>
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-3">
+              {projects.map((project) => (
+                <article
+                  key={project.title}
+                  className="group rounded-[2rem] border border-white/10 bg-slate-900/70 p-6 shadow-lg transition hover:-translate-y-1 hover:border-cyan-400/40"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-300">
+                      {project.category}
+                    </span>
+                    <span className="text-sm text-slate-400">{project.year}</span>
+                  </div>
+                  <h3 className="mt-5 text-2xl font-bold">{project.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-300">{project.description}</p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.tech.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 flex gap-4">
+                    <a
+                      href={project.link}
+                      className="rounded-xl bg-cyan-400 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:scale-[1.02]"
+                    >
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.github}
+                      className="rounded-xl border border-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/5"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
+        </section>
 
-        </div>
-      </div>
+        <section id="education" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">Education</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Academic background</h2>
+          <div className="mt-10 space-y-6">
+            {education.map((item) => (
+              <div
+                key={item.school}
+                className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-lg"
+              >
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <h3 className="text-2xl font-bold">{item.school}</h3>
+                    <p className="text-slate-300">{item.degree}</p>
+                  </div>
+                  <span className="text-sm text-slate-400">{item.period}</span>
+                </div>
+                <p className="mt-4 leading-8 text-slate-300">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <!-- Statistical & ML Techniques -->
-      <div class="skills-box">
-        <h3>Statistical & Machine Learning Techniques</h3>
-        <div class="skill-items">
+        <section id="experience" className="border-y border-white/10 bg-white/[0.03]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">Experience</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">What I’ve worked on</h2>
 
-          <div class="skill-item">
-            <div class="skill-icon">📊</div>
-            <div>
-              <div class="skill-name">Regression</div>
-              <div class="skill-note">Predictive modeling</div>
+            <div className="mt-10 grid gap-6">
+              {experiences.map((item) => (
+                <div
+                  key={`${item.role}-${item.company}`}
+                  className="rounded-[2rem] border border-white/10 bg-slate-900/70 p-8 shadow-lg"
+                >
+                  <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <h3 className="text-2xl font-bold">{item.role}</h3>
+                      <p className="text-slate-300">{item.company}</p>
+                    </div>
+                    <span className="text-sm text-slate-400">{item.period}</span>
+                  </div>
+                  <ul className="mt-6 list-disc space-y-3 pl-5 text-slate-300">
+                    {item.details.map((detail) => (
+                      <li key={detail} className="leading-7">
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
+        </section>
 
-          <div class="skill-item">
-            <div class="skill-icon">📈</div>
-            <div>
-              <div class="skill-name">Classification</div>
-              <div class="skill-note">Supervised learning</div>
+        <section id="skills" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">Skills</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Tools and technologies</h2>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {Object.entries(skills).map(([group, items]) => (
+              <div
+                key={group}
+                className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-lg"
+              >
+                <h3 className="text-xl font-bold capitalize">{group}</h3>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-white/10 bg-slate-900 px-3 py-2 text-sm text-slate-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="border-t border-white/10 bg-gradient-to-br from-slate-900 to-slate-950">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="rounded-[2rem] border border-cyan-400/20 bg-cyan-400/10 p-8 md:p-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Contact</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                Let’s connect.
+              </h2>
+              <p className="mt-5 max-w-2xl leading-8 text-slate-200">
+                I’m open to opportunities in business analytics, data analytics, reporting, and related roles.
+                Feel free to connect with me through email, GitHub, or LinkedIn.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="mailto:ritidahal@gmail.com"
+                  className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-slate-950"
+                >
+                  Email Me
+                </a>
+                <a
+                  href="https://github.com/ritidahal"
+                  className="rounded-2xl border border-white/20 px-6 py-3 text-sm font-semibold transition hover:bg-white/5"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ritidahal/"
+                  className="rounded-2xl border border-white/20 px-6 py-3 text-sm font-semibold transition hover:bg-white/5"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </div>
+        </section>
+      </main>
 
-          <div class="skill-item">
-            <div class="skill-icon">🧠</div>
-            <div>
-              <div class="skill-name">Natural Language Processing</div>
-              <div class="skill-note">Text analytics</div>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <div class="skill-icon">⏳</div>
-            <div>
-              <div class="skill-name">Time Series Forecasting</div>
-              <div class="skill-note">Trend analysis</div>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <div class="skill-icon">📉</div>
-            <div>
-              <div class="skill-name">Predictive Analytics</div>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <div class="skill-icon">📌</div>
-            <div>
-              <div class="skill-name">Prescriptive Analytics</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+      <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-400">
+        © 2026 Riti Dahal. Built with React and Tailwind CSS. Hosted on Vercel.
+      </footer>
     </div>
-  </div>
-</div>
-
-
-  <div class="section">
-    <h2>Projects</h2>
-
-    <div class="card">
-      <h3>Airbnb Price Prediction – Seattle, Washington</h3>
-      <p>This project focuses on predicting Airbnb listing prices in Seattle, Washington, using data-driven modeling techniques. The goal is to identify the key factors that influence nightly prices and compare multiple predictive models to determine the best-performing approach. The analysis applies statistical modeling and machine learning techniques to provide insights that can support hosts, analysts, and platforms in making informed pricing decisions.</p>
-      <a href="https://github.com/ritidahal/Airbnb-Price-Prediction-in-Seattle-Washington">View Project</a>
-    </div>
-
-    <div class="card">
-      <h3>Predicting IBM Employee Attrition</h3>
-      <p> The Predicting IBM Employee Attrition project applies machine learning techniques to analyze and predict employee attrition using the IBM HR Analytics Employee Attrition dataset. The goal is to help HR teams identify key factors that drive turnover and build a predictive model that can flag employees at risk of leaving.</p>
-      <a href="https://github.com/ritidahal/Predicting-IBM-Employee-Attrition">View Project</a>
-    </div>
-
-  </div>
-
-  <footer>
-    © 2026 Riti Dahal
-  </footer>
-
-</body>
-</html>
-
-
-
+  );
+}
