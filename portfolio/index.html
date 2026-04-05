@@ -1,123 +1,15 @@
-// ==========================================
-// FILE: package.json
-// ==========================================
-{
-  "name": "riti-portfolio",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "framer-motion": "^11.11.11",
-    "next": "15.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  }
-}
-
-
-// ==========================================
-// FILE: app/layout.js
-// ==========================================
-import "./globals.css";
-
-export const metadata = {
-  title: "Riti Dahal | Portfolio",
-  description: "Pastel portfolio website for Riti Dahal",
-};
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
-
-
-// ==========================================
-// FILE: data/projects.js
-// ==========================================
-export const projects = [
-  {
-    slug: "sales-performance-dashboard",
-    title: "Sales Performance Dashboard",
-    category: "Business Analytics",
-    year: "2026",
-    shortDescription:
-      "Interactive dashboard to monitor KPIs, revenue trends, and product performance.",
-    fullDescription:
-      "This project focuses on business performance monitoring through a clean and insightful dashboard. It helps identify top-performing products, monthly revenue changes, and operational trends. The goal was to support decision-making through accessible data visualization and reporting.",
-    tools: ["Power BI", "Excel", "SQL", "Dashboarding"],
-    image: "/projects/sales-dashboard.jpg",
-    github: "https://github.com/ritidahal",
-    demo: "#",
-    features: [
-      "Built KPI cards for revenue, growth, and product performance",
-      "Created trend visualizations for monthly analysis",
-      "Improved business reporting efficiency through dashboard design",
-      "Presented insights in a user-friendly visual format"
-    ]
-  },
-  {
-    slug: "customer-insights-analysis",
-    title: "Customer Insights Analysis",
-    category: "Data Analytics",
-    year: "2025",
-    shortDescription:
-      "Segmentation and customer behavior analysis using Python and SQL.",
-    fullDescription:
-      "This project analyzed customer behavior patterns and purchasing activity to support better segmentation and marketing decisions. It involved cleaning data, exploring trends, and creating insight-driven summaries for business use.",
-    tools: ["Python", "Pandas", "SQL", "Tableau"],
-    image: "/projects/customer-analysis.jpg",
-    github: "https://github.com/ritidahal",
-    demo: "#",
-    features: [
-      "Performed data cleaning and transformation",
-      "Analyzed customer segments and purchase behavior",
-      "Identified valuable trends for strategic planning",
-      "Created visual reports for better stakeholder communication"
-    ]
-  },
-  {
-    slug: "business-insights-reporting",
-    title: "Business Insights Reporting",
-    category: "Reporting & Analytics",
-    year: "2025",
-    shortDescription:
-      "Automated reporting workflow to improve business insight generation.",
-    fullDescription:
-      "This project was designed to reduce repetitive reporting work by building a structured reporting workflow. It focused on improving consistency, saving time, and delivering timely business insights with a repeatable approach.",
-    tools: ["Python", "Excel", "SQL", "Automation"],
-    image: "/projects/business-insights.jpg",
-    github: "https://github.com/ritidahal",
-    demo: "#",
-    features: [
-      "Reduced manual reporting effort",
-      "Improved consistency in recurring reports",
-      "Structured business insight generation",
-      "Supported data-driven business decisions"
-    ]
-  }
-];
-
-
-// ==========================================
-// FILE: components/ThemeToggle.js
-// ==========================================
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-export default function ThemeToggle() {
+export default function Page() {
   const [dark, setDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") {
       document.documentElement.classList.add("dark");
       setDark(true);
     }
@@ -138,927 +30,752 @@ export default function ThemeToggle() {
     }
   };
 
+  const projects = [
+    {
+      slug: "sales-dashboard",
+      title: "Sales Performance Dashboard",
+      category: "Business Analytics",
+      year: "2026",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      description:
+        "An interactive dashboard to monitor KPIs, revenue trends, and top-performing products for better business decisions.",
+      tools: ["Power BI", "Excel", "SQL"],
+      github: "https://github.com/ritidahal",
+    },
+    {
+      slug: "customer-analysis",
+      title: "Customer Insights Analysis",
+      category: "Data Analytics",
+      year: "2025",
+      image:
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+      description:
+        "A customer segmentation and behavior analysis project using Python and SQL to identify valuable business insights.",
+      tools: ["Python", "Pandas", "SQL"],
+      github: "https://github.com/ritidahal",
+    },
+    {
+      slug: "business-reporting",
+      title: "Business Insights Reporting",
+      category: "Reporting & Analytics",
+      year: "2025",
+      image:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      description:
+        "A structured reporting workflow designed to improve consistency, speed, and quality of recurring business reports.",
+      tools: ["Python", "Excel", "Automation"],
+      github: "https://github.com/ritidahal",
+    },
+  ];
+
   return (
-    <button className="theme-toggle" onClick={toggleTheme}>
-      {dark ? "☀️ Light" : "🌙 Dark"}
-    </button>
-  );
-}
+    <>
+      <style jsx global>{`
+        :root {
+          --bg: #fffafc;
+          --bg-soft: #f8f1ff;
+          --card: rgba(255, 255, 255, 0.82);
+          --card-strong: #ffffff;
+          --border: #eadcf8;
+          --text: #5a4b7a;
+          --muted: #7f71a2;
+          --primary: #d8c4ff;
+          --secondary: #ffd6e7;
+          --accent: #c7e9ff;
+          --mint: #d9f7e8;
+          --peach: #ffe4c7;
+          --shadow: 0 10px 30px rgba(157, 129, 191, 0.14);
+        }
 
+        .dark {
+          --bg: #1f1830;
+          --bg-soft: #2a203f;
+          --card: rgba(51, 40, 72, 0.82);
+          --card-strong: #34274b;
+          --border: #55416f;
+          --text: #f8efff;
+          --muted: #d7c9eb;
+          --primary: #8b6fc9;
+          --secondary: #d98cb3;
+          --accent: #8ecae6;
+          --mint: #96d6b3;
+          --peach: #e5b98b;
+          --shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+        }
 
-// ==========================================
-// FILE: components/Navbar.js
-// ==========================================
-"use client";
+        * {
+          box-sizing: border-box;
+        }
 
-import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
-import { useState } from "react";
+        html {
+          scroll-behavior: smooth;
+        }
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
+        body {
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+          background:
+            radial-gradient(circle at top left, rgba(216, 196, 255, 0.35), transparent 22%),
+            radial-gradient(circle at top right, rgba(255, 214, 231, 0.28), transparent 24%),
+            linear-gradient(180deg, var(--bg), #fffdfd);
+          color: var(--text);
+          transition: background 0.35s ease, color 0.35s ease;
+        }
 
-  return (
-    <header className="navbar">
-      <div className="container nav-inner">
-        <Link href="/" className="logo">
-          Riti Dahal
-        </Link>
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
 
-        <nav className={`nav-links ${open ? "show" : ""}`}>
-          <a href="#about" onClick={() => setOpen(false)}>About</a>
-          <a href="#skills" onClick={() => setOpen(false)}>Skills</a>
-          <a href="#education" onClick={() => setOpen(false)}>Education</a>
-          <a href="#experience" onClick={() => setOpen(false)}>Experience</a>
-          <a href="#projects" onClick={() => setOpen(false)}>Projects</a>
-        </nav>
+        img {
+          max-width: 100%;
+          display: block;
+        }
 
-        <div className="nav-actions">
-          <ThemeToggle />
-          <button className="menu-btn" onClick={() => setOpen(!open)}>
-            ☰
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-}
+        .container {
+          width: min(92%, 1150px);
+          margin: 0 auto;
+        }
 
+        .navbar {
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          backdrop-filter: blur(14px);
+          background: rgba(255, 250, 252, 0.72);
+          border-bottom: 1px solid var(--border);
+        }
 
-// ==========================================
-// FILE: components/ProjectCard.js
-// ==========================================
-"use client";
+        .dark .navbar {
+          background: rgba(31, 24, 48, 0.72);
+        }
 
-import Link from "next/link";
-import { motion } from "framer-motion";
+        .nav-inner {
+          min-height: 76px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
 
-export default function ProjectCard({ project, index }) {
-  return (
-    <motion.div
-      className="project-card"
-      initial={{ opacity: 0, y: 35 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: index * 0.12 }}
-      viewport={{ once: true }}
-    >
-      <div className="project-image-wrap">
-        <img src={project.image} alt={project.title} className="project-image" />
-      </div>
+        .logo {
+          font-size: 1.2rem;
+          font-weight: 800;
+        }
 
-      <div className="project-top">
-        <span className="tag">{project.category}</span>
-        <span className="year">{project.year}</span>
-      </div>
+        .nav-links {
+          display: flex;
+          gap: 22px;
+          align-items: center;
+        }
 
-      <h3>{project.title}</h3>
-      <p>{project.shortDescription}</p>
+        .nav-links a {
+          color: var(--muted);
+          font-weight: 600;
+        }
 
-      <div className="tech-stack">
-        {project.tools.map((tool) => (
-          <span key={tool}>{tool}</span>
-        ))}
-      </div>
+        .nav-links a:hover {
+          color: var(--text);
+        }
 
-      <div className="project-actions">
-        <Link href={`/projects/${project.slug}`} className="btn-primary small-btn">
-          View Details
-        </Link>
-        <a href={project.github} target="_blank" rel="noreferrer" className="btn-secondary small-btn">
-          GitHub
-        </a>
-      </div>
-    </motion.div>
-  );
-}
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
 
+        .theme-btn,
+        .menu-btn,
+        .btn-primary,
+        .btn-secondary {
+          border: none;
+          cursor: pointer;
+          font-weight: 700;
+        }
 
-// ==========================================
-// FILE: app/page.js
-// ==========================================
-"use client";
+        .theme-btn {
+          background: var(--card-strong);
+          color: var(--text);
+          border: 1px solid var(--border);
+          border-radius: 999px;
+          padding: 10px 16px;
+          box-shadow: var(--shadow);
+        }
 
-import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
-import ProjectCard from "../components/ProjectCard";
-import { projects } from "../data/projects";
+        .menu-btn {
+          display: none;
+          background: var(--card-strong);
+          color: var(--text);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          padding: 10px 12px;
+        }
 
-export default function HomePage() {
-  return (
-    <main>
-      <Navbar />
+        .hero {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          padding: 70px 0 50px;
+        }
 
-      <section className="hero">
-        <div className="container hero-grid">
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="hero-badge">Pastel Portfolio</span>
-            <h1>Riti Dahal</h1>
-            <p className="hero-subtitle">Business & Data Analytics Enthusiast</p>
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 40px;
+          align-items: center;
+        }
 
-            <p className="hero-text">
-              Passionate about using data to solve real-world business problems
-              through analytics, reporting, dashboards, and insight-driven decisions.
-            </p>
+        .hero-badge {
+          display: inline-block;
+          background: var(--primary);
+          padding: 10px 16px;
+          border-radius: 999px;
+          font-weight: 700;
+          margin-bottom: 20px;
+        }
 
-            <div className="hero-actions">
-              <a href="/resume.pdf" download className="btn-primary">
-                Download Resume
-              </a>
-              <a href="#projects" className="btn-secondary">
-                View Projects
-              </a>
+        .hero h1 {
+          font-size: clamp(2.8rem, 7vw, 5rem);
+          line-height: 1.02;
+          margin: 0;
+        }
+
+        .hero-subtitle {
+          color: var(--muted);
+          font-size: 1.2rem;
+          margin-top: 12px;
+          margin-bottom: 18px;
+        }
+
+        .hero-text {
+          font-size: 1.05rem;
+          line-height: 1.8;
+          max-width: 650px;
+        }
+
+        .hero-actions,
+        .social-links,
+        .project-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 24px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 12px 18px;
+          border-radius: 14px;
+        }
+
+        .btn-primary {
+          background: var(--primary);
+          color: var(--text);
+        }
+
+        .btn-secondary {
+          background: var(--card-strong);
+          color: var(--text);
+          border: 1px solid var(--border);
+        }
+
+        .social-links a {
+          background: var(--card-strong);
+          border: 1px solid var(--border);
+          padding: 10px 15px;
+          border-radius: 999px;
+          box-shadow: var(--shadow);
+        }
+
+        .hero-card,
+        .card,
+        .skill-card,
+        .timeline-item,
+        .project-card,
+        .project-detail-card {
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: 28px;
+          box-shadow: var(--shadow);
+        }
+
+        .hero-card {
+          padding: 30px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .profile-img {
+          width: 320px;
+          height: 320px;
+          object-fit: cover;
+          border-radius: 30px;
+          border: 6px solid rgba(255, 255, 255, 0.75);
+        }
+
+        .section {
+          padding: 80px 0;
+        }
+
+        .section-label {
+          color: var(--muted);
+          letter-spacing: 0.16em;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+
+        .section-title {
+          font-size: clamp(2rem, 4vw, 2.8rem);
+          margin: 0 0 28px 0;
+        }
+
+        .card {
+          padding: 30px;
+        }
+
+        .card p {
+          line-height: 1.8;
+          margin-bottom: 12px;
+        }
+
+        .skills-grid,
+        .projects-grid {
+          display: grid;
+          gap: 22px;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .skill-card {
+          padding: 24px;
+        }
+
+        .skill-card h3 {
+          margin-top: 0;
+          margin-bottom: 14px;
+        }
+
+        .skill-list,
+        .tech-stack {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .skill-list span,
+        .tech-stack span {
+          background: var(--card-strong);
+          border: 1px solid var(--border);
+          padding: 8px 12px;
+          border-radius: 999px;
+          font-size: 0.9rem;
+        }
+
+        .timeline-grid {
+          display: grid;
+          gap: 22px;
+        }
+
+        .timeline-item {
+          padding: 26px;
+        }
+
+        .timeline-item h3 {
+          margin-top: 0;
+          margin-bottom: 8px;
+        }
+
+        .timeline-item p,
+        .timeline-item span {
+          color: var(--muted);
+        }
+
+        .timeline-item ul {
+          margin-top: 16px;
+          padding-left: 20px;
+        }
+
+        .timeline-item li {
+          margin-bottom: 10px;
+          line-height: 1.7;
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .project-card {
+          overflow: hidden;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .project-card:hover {
+          transform: translateY(-6px);
+        }
+
+        .project-image {
+          width: 100%;
+          height: 220px;
+          object-fit: cover;
+        }
+
+        .project-body {
+          padding: 18px;
+        }
+
+        .project-top {
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+
+        .tag {
+          background: var(--secondary);
+          padding: 8px 12px;
+          border-radius: 999px;
+          font-size: 0.82rem;
+          font-weight: 700;
+        }
+
+        .year {
+          color: var(--muted);
+          font-weight: 700;
+        }
+
+        .project-card h3 {
+          margin: 0 0 12px 0;
+        }
+
+        .project-card p {
+          line-height: 1.7;
+          margin-bottom: 16px;
+        }
+
+        .project-detail-card {
+          margin-top: 20px;
+          padding: 26px;
+        }
+
+        .project-detail-card h3 {
+          margin-top: 0;
+        }
+
+        .footer {
+          text-align: center;
+          padding: 35px 20px 45px;
+          color: var(--muted);
+        }
+
+        .fade-up {
+          opacity: 0;
+          transform: translateY(28px);
+          animation: fadeUp 0.8s ease forwards;
+        }
+
+        .fade-up.delay-1 {
+          animation-delay: 0.12s;
+        }
+
+        .fade-up.delay-2 {
+          animation-delay: 0.24s;
+        }
+
+        .fade-up.delay-3 {
+          animation-delay: 0.36s;
+        }
+
+        @keyframes fadeUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @media (max-width: 980px) {
+          .hero-grid,
+          .skills-grid,
+          .projects-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .profile-img {
+            width: 260px;
+            height: 260px;
+          }
+        }
+
+        @media (max-width: 760px) {
+          .menu-btn {
+            display: inline-flex;
+          }
+
+          .nav-links {
+            display: ${menuOpen ? "flex" : "none"};
+            position: absolute;
+            top: 76px;
+            right: 4%;
+            flex-direction: column;
+            background: var(--card-strong);
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+          }
+
+          .hero {
+            min-height: auto;
+            padding-top: 45px;
+          }
+
+          .section {
+            padding: 65px 0;
+          }
+        }
+      `}</style>
+
+      <main>
+        <header className="navbar">
+          <div className="container nav-inner">
+            <a href="#home" className="logo">
+              Riti Dahal
+            </a>
+
+            <nav className="nav-links">
+              <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+              <a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a>
+              <a href="#education" onClick={() => setMenuOpen(false)}>Education</a>
+              <a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a>
+              <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
+            </nav>
+
+            <div className="nav-actions">
+              <button className="theme-btn" onClick={toggleTheme}>
+                {dark ? "☀️ Light" : "🌙 Dark"}
+              </button>
+              <button className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+                ☰
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <section className="hero" id="home">
+          <div className="container hero-grid">
+            <div className="fade-up">
+              <span className="hero-badge">Pastel Portfolio</span>
+              <h1>Riti Dahal</h1>
+              <p className="hero-subtitle">Business & Data Analytics Enthusiast</p>
+
+              <p className="hero-text">
+                Passionate about using data to solve real-world business problems
+                through analytics, reporting, dashboards, and insight-driven decisions.
+              </p>
+
+              <div className="hero-actions">
+                <a href="/resume.pdf" download className="btn-primary">
+                  Download Resume
+                </a>
+                <a href="#projects" className="btn-secondary">
+                  View Projects
+                </a>
+              </div>
+
+              <div className="social-links">
+                <a href="mailto:ritidahal@gmail.com">Email</a>
+                <a href="https://github.com/ritidahal" target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ritidahal/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
             </div>
 
-            <div className="social-links">
-              <a href="mailto:ritidahal@gmail.com">Email</a>
-              <a href="https://github.com/ritidahal" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/ritidahal/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <div className="hero-card fade-up delay-1">
+              <img src="/profile.jpg" alt="Riti Dahal" className="profile-img" />
             </div>
-          </motion.div>
+          </div>
+        </section>
 
-          <motion.div
-            className="hero-card"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-          >
-            <img src="/profile.jpg" alt="Riti Dahal" className="profile-img" />
-          </motion.div>
-        </div>
-      </section>
+        <section id="about" className="section">
+          <div className="container">
+            <div className="card fade-up">
+              <p className="section-label">About</p>
+              <h2 className="section-title">Turning Data into Business Insight</h2>
+              <p>
+                Passionate about using data to solve real-world business problems.
+                I focus on extracting insights from data, building reports and dashboards,
+                and supporting strategic decisions with quantitative analysis.
+              </p>
+              <p>
+                I enjoy helping organizations make informed, data-driven decisions
+                that improve efficiency and performance.
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <section id="about" className="section">
-        <div className="container">
-          <motion.div
-            className="glass-card"
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-            viewport={{ once: true }}
-          >
-            <p className="section-label">About</p>
-            <h2>Turning Data into Business Insight</h2>
-            <p>
-              Passionate about using data to solve real-world business problems.
-              I focus on extracting insights from data, building reports and dashboards,
-              and supporting strategic decisions with quantitative analysis.
-            </p>
-            <p>
-              I enjoy helping organizations make informed, data-driven decisions
-              that improve efficiency and performance.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+        <section id="skills" className="section">
+          <div className="container">
+            <p className="section-label">Skills</p>
+            <h2 className="section-title">Technical & Analytical Skills</h2>
 
-      <section id="skills" className="section">
-        <div className="container">
-          <p className="section-label">Skills</p>
-          <h2 className="section-title-main">Technical & Analytical Skills</h2>
-
-          <div className="skills-grid">
-            {[
-              {
-                title: "Analytics",
-                items: ["Data Analysis", "Dashboarding", "Reporting", "Business Analysis"],
-              },
-              {
-                title: "Tools",
-                items: ["Excel", "Power BI", "SQL", "Tableau"],
-              },
-              {
-                title: "Programming",
-                items: ["Python", "Pandas", "HTML", "CSS", "JavaScript"],
-              },
-              {
-                title: "Professional",
-                items: ["Communication", "Problem Solving", "Critical Thinking", "Teamwork"],
-              },
-            ].map((group, index) => (
-              <motion.div
-                key={group.title}
-                className="skill-card"
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <h3>{group.title}</h3>
-                <div className="skill-list">
-                  {group.items.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
+            <div className="skills-grid">
+              {[
+                {
+                  title: "Analytics",
+                  items: ["Data Analysis", "Dashboarding", "Reporting", "Business Analysis"],
+                },
+                {
+                  title: "Tools",
+                  items: ["Excel", "Power BI", "SQL", "Tableau"],
+                },
+                {
+                  title: "Programming",
+                  items: ["Python", "Pandas", "HTML", "CSS", "JavaScript"],
+                },
+                {
+                  title: "Professional",
+                  items: ["Communication", "Problem Solving", "Critical Thinking", "Teamwork"],
+                },
+              ].map((group, index) => (
+                <div className={`skill-card fade-up delay-${index % 4}`} key={group.title}>
+                  <h3>{group.title}</h3>
+                  <div className="skill-list">
+                    {group.items.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="education" className="section">
-        <div className="container">
-          <p className="section-label">Education</p>
-          <h2 className="section-title-main">Academic Background</h2>
+        <section id="education" className="section">
+          <div className="container">
+            <p className="section-label">Education</p>
+            <h2 className="section-title">Academic Background</h2>
 
-          <motion.div
-            className="timeline-item"
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-            viewport={{ once: true }}
-          >
-            <h3>Bachelor’s Degree in Business / Data Analytics</h3>
-            <p>Your University Name</p>
-            <span>Expected Graduation: 2026</span>
-          </motion.div>
-        </div>
-      </section>
-
-      <section id="experience" className="section">
-        <div className="container">
-          <p className="section-label">Experience</p>
-          <h2 className="section-title-main">Relevant Experience</h2>
-
-          <div className="timeline-grid">
-            <motion.div
-              className="timeline-item"
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55 }}
-              viewport={{ once: true }}
-            >
-              <h3>Data Analytics Projects</h3>
-              <p>2024 – Present</p>
-              <ul>
-                <li>Worked on business data analysis projects</li>
-                <li>Built dashboards and reports</li>
-                <li>Used Python and Excel for analysis</li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              className="timeline-item"
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <h3>Academic Coursework</h3>
-              <p>2023 – Present</p>
-              <ul>
-                <li>Applied analytics and statistics techniques</li>
-                <li>Worked with real-world datasets</li>
-                <li>Strengthened data storytelling and presentation skills</li>
-              </ul>
-            </motion.div>
+            <div className="timeline-grid">
+              <div className="timeline-item fade-up">
+                <h3>Bachelor’s Degree in Business / Data Analytics</h3>
+                <p>Your University Name</p>
+                <span>Expected Graduation: 2026</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="projects" className="section">
-        <div className="container">
-          <p className="section-label">Projects</p>
-          <h2 className="section-title-main">Featured Projects</h2>
+        <section id="experience" className="section">
+          <div className="container">
+            <p className="section-label">Experience</p>
+            <h2 className="section-title">Relevant Experience</h2>
 
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
-            ))}
+            <div className="timeline-grid">
+              <div className="timeline-item fade-up">
+                <h3>Data Analytics Projects</h3>
+                <p>2024 – Present</p>
+                <ul>
+                  <li>Worked on business data analysis projects</li>
+                  <li>Built dashboards and reports</li>
+                  <li>Used Python and Excel for analysis</li>
+                </ul>
+              </div>
+
+              <div className="timeline-item fade-up delay-1">
+                <h3>Academic Coursework</h3>
+                <p>2023 – Present</p>
+                <ul>
+                  <li>Applied analytics and statistics techniques</li>
+                  <li>Worked with real-world datasets</li>
+                  <li>Strengthened data storytelling and presentation skills</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <footer className="footer">
-        © 2026 Riti Dahal. Built with Next.js and deployed on Vercel.
-      </footer>
-    </main>
-  );
-}
+        <section id="projects" className="section">
+          <div className="container">
+            <p className="section-label">Projects</p>
+            <h2 className="section-title">Featured Projects</h2>
 
+            <div className="projects-grid">
+              {projects.map((project, index) => (
+                <article className={`project-card fade-up delay-${index % 3}`} key={project.slug}>
+                  <img src={project.image} alt={project.title} className="project-image" />
 
-// ==========================================
-// FILE: app/projects/[slug]/page.js
-// ==========================================
-import Link from "next/link";
-import { projects } from "../../../data/projects";
+                  <div className="project-body">
+                    <div className="project-top">
+                      <span className="tag">{project.category}</span>
+                      <span className="year">{project.year}</span>
+                    </div>
 
-export function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
-}
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
 
-export default function ProjectDetailPage({ params }) {
-  const project = projects.find((item) => item.slug === params.slug);
+                    <div className="tech-stack">
+                      {project.tools.map((tool) => (
+                        <span key={tool}>{tool}</span>
+                      ))}
+                    </div>
 
-  if (!project) {
-    return (
-      <div className="detail-page">
-        <div className="container">
-          <h1>Project not found</h1>
-          <Link href="/" className="btn-secondary back-btn">Back Home</Link>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="detail-page">
-      <div className="container">
-        <Link href="/" className="btn-secondary back-btn">← Back to Home</Link>
-
-        <div className="detail-hero">
-          <div className="detail-text">
-            <span className="tag">{project.category}</span>
-            <h1>{project.title}</h1>
-            <p className="detail-year">{project.year}</p>
-            <p className="detail-description">{project.fullDescription}</p>
-
-            <div className="tech-stack">
-              {project.tools.map((tool) => (
-                <span key={tool}>{tool}</span>
+                    <div className="project-actions">
+                      <a href={project.github} target="_blank" rel="noreferrer" className="btn-primary">
+                        GitHub
+                      </a>
+                      <a href={`#${project.slug}`} className="btn-secondary">
+                        View Details
+                      </a>
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
 
-            <div className="project-actions detail-actions">
-              <a href={project.github} target="_blank" rel="noreferrer" className="btn-primary">
-                GitHub
-              </a>
-              <a href={project.demo} className="btn-secondary">
-                Live Demo
-              </a>
-            </div>
-          </div>
+            {projects.map((project, index) => (
+              <div
+                key={project.slug + "-detail"}
+                id={project.slug}
+                className={`project-detail-card fade-up delay-${index % 3}`}
+              >
+                <p className="section-label">Project Detail</p>
+                <h3>{project.title}</h3>
+                <p>
+                  <strong>Category:</strong> {project.category} | <strong>Year:</strong>{" "}
+                  {project.year}
+                </p>
+                <p>{project.description}</p>
 
-          <div className="detail-image-wrap">
-            <img src={project.image} alt={project.title} className="detail-image" />
-          </div>
-        </div>
-
-        <div className="detail-section">
-          <h2>Key Features</h2>
-          <ul className="detail-list">
-            {project.features.map((feature) => (
-              <li key={feature}>{feature}</li>
+                <div className="tech-stack" style={{ marginTop: 16 }}>
+                  {project.tools.map((tool) => (
+                    <span key={tool}>{tool}</span>
+                  ))}
+                </div>
+              </div>
             ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+          </div>
+        </section>
+
+        <footer className="footer">
+          © 2026 Riti Dahal. Built with Next.js and pastel styling.
+        </footer>
+      </main>
+    </>
   );
-}
-
-
-// ==========================================
-// FILE: app/globals.css
-// ==========================================
-:root {
-  --bg: #fffafc;
-  --bg-soft: #f8f1ff;
-  --card: rgba(255, 255, 255, 0.72);
-  --card-strong: #ffffff;
-  --border: #eadcf8;
-  --text: #5a4b7a;
-  --muted: #7f71a2;
-
-  --primary: #d8c4ff;
-  --secondary: #ffd6e7;
-  --accent: #c7e9ff;
-  --mint: #d9f7e8;
-  --peach: #ffe4c7;
-
-  --shadow: 0 10px 30px rgba(157, 129, 191, 0.12);
-}
-
-.dark {
-  --bg: #1f1830;
-  --bg-soft: #2a203f;
-  --card: rgba(51, 40, 72, 0.78);
-  --card-strong: #34274b;
-  --border: #55416f;
-  --text: #f8efff;
-  --muted: #d7c9eb;
-
-  --primary: #8b6fc9;
-  --secondary: #d98cb3;
-  --accent: #8ecae6;
-  --mint: #96d6b3;
-  --peach: #e5b98b;
-
-  --shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background:
-    radial-gradient(circle at top left, rgba(216, 196, 255, 0.35), transparent 22%),
-    radial-gradient(circle at top right, rgba(255, 214, 231, 0.28), transparent 24%),
-    linear-gradient(180deg, var(--bg), #fffdfd);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  transition: background 0.35s ease, color 0.35s ease;
-}
-
-.dark body {
-  background:
-    radial-gradient(circle at top left, rgba(139, 111, 201, 0.25), transparent 22%),
-    radial-gradient(circle at top right, rgba(217, 140, 179, 0.18), transparent 24%),
-    linear-gradient(180deg, var(--bg), #191324);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-.container {
-  width: min(92%, 1150px);
-  margin: 0 auto;
-}
-
-.section {
-  padding: 80px 0;
-}
-
-.section-label {
-  color: var(--muted);
-  letter-spacing: 0.16em;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.section-title-main {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  margin-bottom: 28px;
-}
-
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 250, 252, 0.72);
-  border-bottom: 1px solid var(--border);
-}
-
-.dark .navbar {
-  background: rgba(31, 24, 48, 0.72);
-}
-
-.nav-inner {
-  min-height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.logo {
-  font-size: 1.2rem;
-  font-weight: 800;
-}
-
-.nav-links {
-  display: flex;
-  gap: 22px;
-}
-
-.nav-links a {
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.nav-links a:hover {
-  color: var(--text);
-}
-
-.nav-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.menu-btn {
-  display: none;
-  border: 1px solid var(--border);
-  background: var(--card-strong);
-  color: var(--text);
-  border-radius: 12px;
-  padding: 10px 12px;
-  cursor: pointer;
-}
-
-.theme-toggle {
-  border: 1px solid var(--border);
-  background: var(--card-strong);
-  color: var(--text);
-  border-radius: 999px;
-  padding: 10px 16px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  font-weight: 700;
-}
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 70px 0 50px;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.hero-badge {
-  display: inline-block;
-  background: var(--primary);
-  color: var(--text);
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: clamp(2.8rem, 7vw, 5rem);
-  line-height: 1.03;
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: var(--muted);
-  margin-top: 10px;
-  margin-bottom: 18px;
-}
-
-.hero-text {
-  font-size: 1.05rem;
-  max-width: 650px;
-  line-height: 1.8;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-
-.social-links {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-
-.social-links a {
-  background: var(--card-strong);
-  border: 1px solid var(--border);
-  padding: 10px 15px;
-  border-radius: 999px;
-  box-shadow: var(--shadow);
-}
-
-.hero-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 32px;
-  box-shadow: var(--shadow);
-}
-
-.profile-img {
-  width: 320px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 30px;
-  border: 6px solid rgba(255,255,255,0.75);
-}
-
-.glass-card,
-.skill-card,
-.timeline-item,
-.project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  box-shadow: var(--shadow);
-}
-
-.glass-card {
-  padding: 30px;
-}
-
-.glass-card h2 {
-  margin-bottom: 16px;
-  font-size: 2rem;
-}
-
-.glass-card p {
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.skill-card {
-  padding: 24px;
-}
-
-.skill-card h3 {
-  margin-bottom: 16px;
-}
-
-.skill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skill-list span,
-.tech-stack span {
-  background: var(--card-strong);
-  border: 1px solid var(--border);
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-}
-
-.timeline-grid {
-  display: grid;
-  gap: 22px;
-}
-
-.timeline-item {
-  padding: 26px;
-}
-
-.timeline-item h3 {
-  margin-bottom: 8px;
-  font-size: 1.35rem;
-}
-
-.timeline-item p,
-.timeline-item span {
-  color: var(--muted);
-}
-
-.timeline-item ul {
-  margin-top: 16px;
-  padding-left: 20px;
-}
-
-.timeline-item li {
-  margin-bottom: 10px;
-  line-height: 1.7;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.project-card {
-  padding: 18px;
-  transition: transform 0.25s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-}
-
-.project-image-wrap {
-  margin-bottom: 18px;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.project-image {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.project-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 14px;
-}
-
-.tag {
-  background: var(--secondary);
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
-.year {
-  color: var(--muted);
-  font-weight: 700;
-}
-
-.project-card h3 {
-  margin-bottom: 12px;
-  font-size: 1.3rem;
-}
-
-.project-card p {
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.project-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn-primary,
-.btn-secondary {
-  padding: 12px 18px;
-  border-radius: 14px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: var(--text);
-}
-
-.btn-secondary {
-  background: var(--card-strong);
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-
-.small-btn {
-  padding: 10px 14px;
-  font-size: 0.95rem;
-}
-
-.footer {
-  text-align: center;
-  padding: 35px 20px 45px;
-  color: var(--muted);
-}
-
-.detail-page {
-  min-height: 100vh;
-  padding: 50px 0 80px;
-}
-
-.back-btn {
-  margin-bottom: 28px;
-}
-
-.detail-hero {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 34px;
-  align-items: center;
-  margin-bottom: 40px;
-}
-
-.detail-text h1 {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  margin-top: 14px;
-  margin-bottom: 10px;
-}
-
-.detail-year {
-  color: var(--muted);
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.detail-description {
-  line-height: 1.9;
-  margin-bottom: 24px;
-}
-
-.detail-image-wrap {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 18px;
-  box-shadow: var(--shadow);
-}
-
-.detail-image {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.detail-section {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 28px;
-  box-shadow: var(--shadow);
-}
-
-.detail-section h2 {
-  margin-bottom: 18px;
-}
-
-.detail-list {
-  padding-left: 20px;
-}
-
-.detail-list li {
-  margin-bottom: 12px;
-  line-height: 1.8;
-}
-
-@media (max-width: 960px) {
-  .hero-grid,
-  .detail-hero,
-  .skills-grid,
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-img {
-    width: 260px;
-    height: 260px;
-  }
-}
-
-@media (max-width: 760px) {
-  .menu-btn {
-    display: inline-flex;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 76px;
-    right: 4%;
-    flex-direction: column;
-    background: var(--card-strong);
-    border: 1px solid var(--border);
-    padding: 18px;
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .hero {
-    min-height: auto;
-    padding-top: 50px;
-  }
-
-  .section {
-    padding: 65px 0;
-  }
 }
